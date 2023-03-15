@@ -10,7 +10,7 @@ async function readWriteJson(d_in,id) {
   try {
     const readFile = await fs.promises.readFile('./data/data.json');
     const myObject = await JSON.parse(readFile);
-    if (myObject[id]){
+    if (myObject.hasOwnProperty(id)){
       obj = await {...myObject,[id]:{"data":{...myObject[id].data,...d_in}}};
     }
     else{
@@ -24,9 +24,11 @@ async function readWriteJson(d_in,id) {
 }
 
 wss.on('connection', async (ws, req)=>{
+  try{
     const url = await req.url;
-    const id = await url.substring(9,15);
-    if(id_clients[id]){
+    const id = await url.split("=")[1];
+    console.log(id);
+    if(id_clients.hasOwnProperty(id)){
       await id_clients[id].push(ws);
       let temp = await new Set(id_clients[id]);
       id_clients[id] = await[...temp]
@@ -59,4 +61,8 @@ wss.on('connection', async (ws, req)=>{
         id_clients[id].splice(index, 1);
       }
     });
+  }
+  catch(e){
+    console.log(e);
+  }
 });

@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>CCanvas</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./landingpage/style.css">
 </head>
 <body>
   <div class="container">
     <div class="box">
-      <div class="feild"></div>
-      <div class="btn">Make canvas</div>
+      <input type="text" placeholder="WRITE ID (len(id)<=10)" id="inp" oninput="inpCheck()">
+      <div id="container">
+        <button class="learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Continue</span>
+        </button>
+      </div>
+      <div class="btn">
+      </div>      
     </div>
   <div id="guide"></div>
 </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <script  src="./script.js"></script>
+  <script  src="./landingpage/script.js"></script>
   
 </body>
 </html>
