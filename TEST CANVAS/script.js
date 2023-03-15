@@ -1,7 +1,7 @@
 /**
  * @type HTMLCanvasElement
  */
-const sock  =  new WebSocket(`ws://localhost:8080/draw?id=hello6`);
+const sock  =  new WebSocket(`ws://localhost:8080/draw?id=hello7`);
 const canvas = document.getElementById("canvas");
 const guide = document.getElementById("guide");
 const colorInput = document.getElementById("colorInput");

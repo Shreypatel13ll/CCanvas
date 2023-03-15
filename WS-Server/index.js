@@ -45,7 +45,7 @@ wss.on('connection', async (ws, req)=>{
           const myObject = await JSON.parse(readFile);
           id_clients[id].forEach(client => {
             if (ws != client){
-              client.send(JSON.stringify(myObject[id].data))
+              client.send(JSON.stringify(myObject[id].data));
             }
           });
         }
@@ -59,5 +59,4 @@ wss.on('connection', async (ws, req)=>{
         id_clients[id].splice(index, 1);
       }
     });
-    console.log(id_clients[id].length);
 });

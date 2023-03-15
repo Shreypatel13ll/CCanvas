@@ -1,0 +1,27 @@
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: sans-serif;
+  overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+}
+.container{
+  display: flex;
+  position: relative;
+}
+#guide {
+  display: grid;
+  position: absolute;
+  pointer-events: none;
+  position: absolute;
+  border: 1px solid rgb(0, 0, 0);
+  margin-left: -9px;
+  margin-top: -9px;
+
+}
+
+#guide div {
+  background-color: #66545E;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+}
