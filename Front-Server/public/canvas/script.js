@@ -6,7 +6,6 @@ const canvas = document.getElementById("canvas");
 const guide = document.getElementById("guide");
 const colorInput = document.getElementById("colorInput");
 const toggleGuide = document.getElementById("toggleGuide");
-const clearButton = document.getElementById("clearButton");
 const pallet = document.getElementById("pallet");
 const drawingContext = canvas.getContext("2d");
 const CELL_SIDE_COUNT = 96;
@@ -58,17 +57,8 @@ function handleCanvasMousedown(e) {
   }
 }
 
-function handleClearButtonClick() {
-  const yes = confirm("Are you sure you wish to clear the canvas?");
-
-  if (!yes) return;
-
-  drawingContext.fillStyle = "#ffffff";
-  drawingContext.fillRect(0, 0, canvas.width, canvas.height);
-}
-
 function handleToggleGuideChange() {
-  guide.style.display = toggleGuide.checked ? null : "none";
+  guide.style.display = guide.style.display=="none"? null : "none";
 }
 
 async function fillCell(cellX, cellY, colorInput) {
@@ -93,8 +83,7 @@ async function update(e){
 }
 
 canvas.addEventListener("mousedown", handleCanvasMousedown);
-clearButton.addEventListener("click", handleClearButtonClick);
-toggleGuide.addEventListener("change", handleToggleGuideChange);
+toggleGuide.addEventListener("click", handleToggleGuideChange);
 
 // ------ websoccket
 

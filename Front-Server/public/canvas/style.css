@@ -76,3 +76,15 @@ body {
   pointer-events: none;
   margin-top: -20px;
 }
+.guide{
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  padding: 7px;
+  width:28px;
+  height: 28px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 25px;
+  object-fit: contain;
+  cursor: pointer;
+}
