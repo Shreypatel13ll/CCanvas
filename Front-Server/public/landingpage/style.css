@@ -58,6 +58,12 @@ input:not(:placeholder-shown) {
   border-bottom: 6px solid #f73737;
   height: 69px;
 }
+.sml-inp{
+  width: 120px;
+}
+.sml-inp:hover, :focus{
+  width: 200px;
+}
 
 button {
   position: relative;

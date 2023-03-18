@@ -1,14 +1,15 @@
 /**
  * @type HTMLCanvasElement
  */
-const sock  =  new WebSocket(`ws://localhost:8080/draw?id=hello6`);
+const sock  =  new WebSocket(`ws://localhost:8080/draw?id=${window.location.href.split("draw?=")[1]}`);
 const canvas = document.getElementById("canvas");
 const guide = document.getElementById("guide");
 const colorInput = document.getElementById("colorInput");
 const toggleGuide = document.getElementById("toggleGuide");
 const clearButton = document.getElementById("clearButton");
+const pallet = document.getElementById("pallet");
 const drawingContext = canvas.getContext("2d");
-const CELL_SIDE_COUNT = 5;
+const CELL_SIDE_COUNT = 96;
 const cellPixelLength = canvas.width / CELL_SIDE_COUNT;
 var colorHistory = {};
 
@@ -50,6 +51,10 @@ function handleCanvasMousedown(e) {
     }
   } else {
     fillCell(cellX, cellY, colorInput.value).then(e=>send());
+    fillCell(cellX, cellY, colorInput.value)
+    fillCell(cellX, cellY, colorInput.value)
+    fillCell(cellX, cellY, colorInput.value)
+    fillCell(cellX, cellY, colorInput.value)
   }
 }
 
@@ -79,6 +84,10 @@ async function fillCell(cellX, cellY, colorInput) {
 async function update(e){
   colorHistory = {...colorHistory, ...e}
   for (const key in colorHistory) {
+    fillCell(key.split('_')[0],key.split('_')[1], colorHistory[key]);
+    fillCell(key.split('_')[0],key.split('_')[1], colorHistory[key])
+    fillCell(key.split('_')[0],key.split('_')[1], colorHistory[key])
+    fillCell(key.split('_')[0],key.split('_')[1], colorHistory[key])
     fillCell(key.split('_')[0],key.split('_')[1], colorHistory[key])
 }
 }
@@ -95,3 +104,14 @@ sock.onmessage = (e) =>{
 const send = () =>{
   sock.send(JSON.stringify(colorHistory))
 }
+
+//pallet
+
+pallet.addEventListener("click", e=>{
+  if (e.target.className != "pallet"){
+    console.log( e.target.style.backgroundColor)
+  }
+  if (e.target.id == "add"){
+    
+  }
+})

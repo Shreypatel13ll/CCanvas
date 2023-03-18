@@ -1,4 +1,3 @@
-import { randomInt } from 'crypto';
 import express, { json } from 'express';
 import path from 'path';
 import cors from 'cors';
@@ -19,12 +18,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'/public/landingpage/index.html'));
 });
 app.post('/',(req,res)=>{
-  res.redirect(`/draw?=${handleId(req.body.id)}`)
-  // res.send(JSON.stringify({id:`/draw?=${handleId(req.body.id)}`}));  
+      res.redirect(`/draw?=${handleId(req.body.id)}`);
 });
 
 app.get('/draw', (req, res) => {
-  console.log(req.params);
   res.sendFile(path.join(__dirname,'/public/canvas/index.html'));
 });
 
