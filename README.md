@@ -16,15 +16,6 @@ Live Pixel Canvas is a collaborative web-based drawing tool where users can pain
 - Clear canvas: Clear the entire canvas with a single click.
 - Multiple users: Collaborate with multiple users to create a masterpiece together.
 
-## Getting Started
-
-To run this project locally, follow the steps below:
-
-1. Clone the repository: `git clone https://github.com/Shreypatel13ll/CCanvas.git`
-2. Navigate to the project directory: `cd CCanvas`
-3. Install dependencies: `npm install`
-4. Start the server: `npm start`
-5. Open the app in your browser: `http://localhost:3000`
 
 ## Technologies Used
 
