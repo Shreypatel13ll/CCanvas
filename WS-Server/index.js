@@ -8,7 +8,7 @@ var id_clients = {
 async function readWriteJson(d_in,id) {
   var obj;
   try {
-    const readFile = await fs.promises.readFile('../data/data.json');
+    const readFile = await fs.promises.readFile('./data/data.json');
     const myObject = await JSON.parse(readFile);
     if (myObject.hasOwnProperty(id)){
       obj = await {...myObject,[id]:{"data":{...myObject[id].data,...d_in}}};
@@ -17,7 +17,7 @@ async function readWriteJson(d_in,id) {
       obj = await {...myObject,[id]:{"data":{...d_in}}};
     }
 
-    await fs.promises.writeFile('../data/data.json', JSON.stringify(obj));
+    await fs.promises.writeFile('./data/data.json', JSON.stringify(obj));
   } catch (error) {
     console.error(error);
   }
@@ -31,7 +31,7 @@ wss.on('connection', async (ws, req)=>{
       await id_clients[id].push(ws);
       let temp = await new Set(id_clients[id]);
       id_clients[id] = await[...temp];
-      const readFile = await fs.promises.readFile('../data/data.json');
+      const readFile = await fs.promises.readFile('./data/data.json');
       const myObject = await JSON.parse(readFile);
       ws.send(JSON.stringify(myObject[id].data));
     }
@@ -42,7 +42,7 @@ wss.on('connection', async (ws, req)=>{
         try {
           const data = await  JSON.parse(message);
           await readWriteJson(data, id);
-          const readFile = await fs.promises.readFile('../data/data.json');
+          const readFile = await fs.promises.readFile('./data/data.json');
           const myObject = await JSON.parse(readFile);
           id_clients[id].forEach(client => {
             if (ws != client){

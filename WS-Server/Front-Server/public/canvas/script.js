@@ -10,6 +10,7 @@ const pallet = document.getElementById("pallet");
 const drawingContext = canvas.getContext("2d");
 const CELL_SIDE_COUNT = 96;
 const cellPixelLength = canvas.width / CELL_SIDE_COUNT;
+var active = "#ffffff";
 var colorHistory = {};
 
 // Set default color
@@ -91,16 +92,20 @@ sock.onmessage = (e) =>{
     update(JSON.parse(e.data));
 }
 const send = () =>{
-  sock.send(JSON.stringify(colorHistory))
+  sock.send(JSON.stringify(colorHistory));
+}
+sock.onclose = () =>{
+  console.log("warning");
 }
 
 //pallet
+const rgba2hex = (rgba) => `#${rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/).slice(1).map((n, i) => (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n)).toString(16).padStart(2, '0').replace('NaN', '')).join('')}`
+
 
 pallet.addEventListener("click", e=>{
   if (e.target.className != "pallet"){
-    console.log( e.target.style.backgroundColor)
-  }
-  if (e.target.id == "add"){
-    
+    if ( e.target.style.backgroundColor){
+      colorInput.value = rgba2hex( e.target.style.backgroundColor);
+    }
   }
 })

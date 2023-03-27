@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ad26499a-9cd4-4887-834d-f1235f91edf5/resourceGroups/CCanvas/providers/Microsoft.Web/sites/CCanvas",
+    "appService.deploySubpath": "."
+}

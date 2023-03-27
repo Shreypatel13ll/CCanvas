@@ -77,3 +77,12 @@ function req(obj){
   }
 })
 };
+
+document.addEventListener('keydown', function(event) {
+  if(event.keyCode == 13) {
+    var x = input.value.toLowerCase();
+    if ((isAlphaNumeric(x) || x=="")){
+      req({id: x});
+    }
+  }
+});
